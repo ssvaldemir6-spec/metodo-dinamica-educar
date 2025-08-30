@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Relatório do Aluno</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: 'Arial', sans-serif; padding: 40px; background: #f9f9f9; }
+    input, select { padding: 8px; margin: 5px; width: 300px; }
+    button { padding: 12px 24px; background: #27ae60; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>📊 Relatório de Progresso – 1º Ano</h2>
+  <input type="text" id="nome" placeholder="Nome do aluno" />
+  <input type="text" id="turma" placeholder="Turma" />
+  <select id="bimestre">
+    <option>Bimestre 1</option>
+    <option>Bimestre 2</option>
+    <option>Bimestre 3</option>
+    <option>Bimestre 4</option>
+  </select>
+  <br/><br/>
+  <button onclick="gerarRelatorio()">Gerar Relatório</button>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    function gerarRelatorio() {
+      const nome = document.getElementById('nome').value;
+      const turma = document.getElementById('turma').value;
+      const bimestre = document.getElementById('bimestre').value;
+
+      const doc = new jsPDF();
+      doc.setFontSize(20);
+      doc.text("RELATÓRIO DE PROGRESSO", 105, 30, null, "center");
+      
+      doc.setFontSize(14);
+      doc.text(`Aluno: ${nome}`, 20, 50);
+      doc.text(`Série: 1º Ano`, 20, 60);
+      doc.text(`Turma: ${turma}`, 20, 70);
+      doc.text(`Bimestre: ${bimestre}`, 20, 80);
+
+      doc.setFontSize(12);
+      doc.text("Habilidades Desenvolvidas:", 20, 100);
+      doc.text("• Reconhecer padrões visuais", 20, 110);
+      doc.text("• Contar e comparar quantidades", 20, 120);
+      doc.text("• Representar dados com pictogramas", 20, 130);
+
+      doc.text("Atividades Concluídas:", 20, 150);
+      doc.text("✓ Sequência de Cores", 20, 160);
+      doc.text("✓ Trilha do Robô", 20, 170);
+      doc.text("✓ Gráfico da Turma", 20, 180);
+
+      doc.text("Recompensas:", 20, 200);
+      doc.text("Moedas: 45 | Medalhas: 3", 20, 210);
+
+      doc.save(`Relatorio_${nome}_${bimestre}.pdf`);
+    }
+  </script>
+</body>
+</html>
