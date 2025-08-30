@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerar Certificado - 1º Ano</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: 'Arial', sans-serif; text-align: center; padding: 40px; background: #f0f8ff; }
+    h2 { color: #4a9d9c; }
+    input { padding: 12px; margin: 10px; width: 300px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
+    button { padding: 12px 24px; background: #4a9d9c; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #3a7d7c; }
+  </style>
+</head>
+<body>
+  <h2>🎓 Gerar Certificado – 1º Ano</h2>
+  <p>Nome do Aluno:</p>
+  <input type="text" id="nomeAluno" placeholder="Digite o nome completo" />
+  <br/>
+  <button onclick="gerarPDF()">🖨️ Gerar PDF</button>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    function gerarPDF() {
+      const nome = document.getElementById('nomeAluno').value.trim();
+      if (!nome) {
+        alert("Por favor, digite o nome do aluno.");
+        return;
+      }
+
+      const doc = new jsPDF();
+      const now = new Date();
+      const data = now.toLocaleDateString('pt-BR');
+
+      doc.setFontSize(24);
+      doc.text("CERTIFICADO DE CONCLUSÃO", 105, 40, null, "center");
+      
+      doc.setFontSize(16);
+      doc.text("O Colégio Instituto Educar certifica que", 105, 60, null, "center");
+      
+      doc.setFontSize(28);
+      doc.setFont(undefined, "bold");
+      doc.text(nome.toUpperCase(), 105, 90, null, "center");
+      
+      doc.setFontSize(16);
+      doc.setFont(undefined, "normal");
+      doc.text("concluiu com sucesso a fase de Padrões Visuais", 105, 120, null, "center");
+      doc.text("do Método Dinâmica Educar, demonstrando", 105, 135, null, "center");
+      doc.text("habilidades em lógica, observação e criatividade.", 105, 150, null, "center");
+      
+      doc.setFontSize(12);
+      doc.text(`Data: ${data}`, 180, 190);
+      doc.text("Assinatura do Professor:", 20, 190);
+      doc.text("_________________________", 35, 200);
+
+      doc.text("Plataforma: metodo-dinamica-educar.vercel.app", 105, 240, null, "center");
+      
+      doc.save(`Certificado_DinamicaEducar_${nome}.pdf`);
+    }
+  </script>
+</body>
+</html>
