@@ -24,3 +24,25 @@ Plataforma de ensino de matemática inovadora para o Ensino Fundamental I (1º a
 ---
 
 ## 📁 Estrutura do Projeto
+
+---
+
+## 🚀 Como Usar
+
+1. Acesse o site acima
+2. Escolha seu ano
+3. Complete as atividades e ganhe moedas!
+4. Ative o **Modo Autista** para maior acessibilidade
+
+---
+
+## 📄 Licença
+
+MIT – Você pode usar, copiar e adaptar para fins educacionais.
+
+---
+
+## 📬 Contato
+
+Desenvolvido com ❤️ para inovação na educação.  
+Idealizado por: **Valdemir S.**
